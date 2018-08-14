@@ -1,11 +1,11 @@
 version: 0.2
-env:
-  variables:
-    branchname: "git branch | sed -n -e 's/^\* \(.*\)/\1/p'"
+
 phases:
   build:
     commands:
-      - python helloworld.py
+    - git branch | sed -n -e 's/^\* \(.*\)/\1/p'
+    - python helloworld.py
+    - git branch | sed -n -e 's/^\* \(.*\)/\1/p'
 artifacts:
   files:
     - '**/*'
