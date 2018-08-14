@@ -8,6 +8,7 @@ phases:
   build:
     commands:
     - git init
+    - git --version
     - echo $branchname
     - git branch
     - python helloworld.py
