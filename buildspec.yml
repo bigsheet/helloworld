@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    branchname: "git branch"
+    branchname: "git branch | sed"
 
 phases:
   build:
