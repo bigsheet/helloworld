@@ -1,9 +1,14 @@
 version: 0.2
 
+env:
+  variables:
+    branchname: "git branch"
+
 phases:
   build:
     commands:
-    - git branch | sed -n -e 's/^\* \(.*\)/\1/p'
+    - echo $branchname
+    - git branch
     - python helloworld.py
     - branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
     - echo $branch
