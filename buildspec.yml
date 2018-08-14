@@ -5,7 +5,8 @@ phases:
     commands:
     - git branch | sed -n -e 's/^\* \(.*\)/\1/p'
     - python helloworld.py
-    - git branch | sed
+    - branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+    - echo $branch
 artifacts:
   files:
     - '**/*'
