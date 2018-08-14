@@ -1,4 +1,7 @@
-version: 0.2         
+version: 0.2
+env:
+  variables:
+    branchname: "git branch | sed -n -e 's/^\* \(.*\)/\1/p'"
 phases:
   build:
     commands:
