@@ -12,8 +12,6 @@ phases:
     - echo $branchname2
     - git branch
     - python helloworld.py
-    - branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-    - echo $branch
    post_build:
     commands:
       echo $branchname
