@@ -8,14 +8,16 @@ phases:
   build:
     commands:
     - git init
+    - more .git/HEAD
     - echo $branchname
     - echo $branchname2
     - git branch
     - python helloworld.py
+    
   post_build:
     commands:
-      echo $branchname
-      echo $branchname2
+    - echo $branchname
+    - echo $branchname2
 artifacts:
   files:
     - '**/*'
