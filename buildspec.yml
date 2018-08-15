@@ -6,11 +6,10 @@ env:
 phases:
   build:
     commands:
-    - git branch --column | grep 6ed3e1d177deef88cb01fe4d3ce6560071874d5d
+    - git branch| grep 6ed3e1d177deef88cb01fe4d3ce6560071874d5d
     - pwd
     - git init
-    - git branch --column
-    - more .git/HEAD
+    - more .git/HEAD | grep 6ed3e1d177deef88cb01fe4d3ce6560071874d5d
     - echo $CODEBUILD_SOURCE_VERSION
     - echo $CODEBUILD_GIT_BRANCH
     - echo $CODEBUILD_RESOLVED_SOURCE_VERSIONGitHub
@@ -19,8 +18,6 @@ phases:
     - printenv
   post_build:
     commands:
-    - echo $branchname
-    - echo $branchname2
 artifacts:
   files:
     - '**/*'
