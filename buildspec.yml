@@ -4,7 +4,7 @@ env:
   variables:
     branchname: "git branch"
   commands:
-    - git branch --column 
+    - git branch --column | grep 6ed3e1d177deef88cb01fe4d3ce6560071874d5d
 phases:
   build:
     commands:
