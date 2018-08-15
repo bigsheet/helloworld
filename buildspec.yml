@@ -4,13 +4,17 @@ env:
   variables:
     branchname: "git branch"
     branchname2: "git branch | grep '*'"
+    branchname3: "CODEBUILD_SOURCE_VERSION"
 phases:
   build:
     commands:
+    - pwd
     - git init
     - more .git/HEAD
     - echo $branchname
     - echo $branchname2
+    - echo $branchname3
+    - echo $CODEBUILD_SOURCE_VERSION
     - git branch
     - python helloworld.py
   post_build:
