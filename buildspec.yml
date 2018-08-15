@@ -6,10 +6,11 @@ env:
 phases:
   build:
     commands:
-    - git branch| grep 6ed3e1d177deef88cb01fe4d3ce6560071874d5d
+    - git branch
+    - git log
     - pwd
     - git init
-    - more .git/HEAD | grep 6ed3e1d177deef88cb01fe4d3ce6560071874d5d
+    - more .git/HEAD
     - echo $CODEBUILD_SOURCE_VERSION
     - echo $CODEBUILD_GIT_BRANCH
     - echo $CODEBUILD_RESOLVED_SOURCE_VERSIONGitHub
