@@ -15,6 +15,7 @@ phases:
     - echo $branchname2
     - echo $branchname3
     - echo $CODEBUILD_SOURCE_VERSION
+    - echo $CODEBUILD_RESOLVED_SOURCE_VERSIONGitHub
     - git branch
     - python helloworld.py
   post_build:
