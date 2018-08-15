@@ -3,11 +3,14 @@ version: 0.2
 env:
   variables:
     branchname: "git branch"
+  commands:
+    - git branch --column 
 phases:
   build:
     commands:
     - pwd
     - git init
+    - git branch --column
     - more .git/HEAD
     - echo $CODEBUILD_SOURCE_VERSION
     - echo $CODEBUILD_GIT_BRANCH
