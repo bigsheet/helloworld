@@ -12,7 +12,7 @@ phases:
     - echo $branchname2
     - git branch
     - python helloworld.py
-   post_build:
+  post_build:
     commands:
       echo $branchname
       echo $branchname2
