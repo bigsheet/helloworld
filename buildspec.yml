@@ -2,17 +2,22 @@ version: 0.2
 
 env:
   variables:
-    branchname: "git branch | sed"
-
+    branchname: "git branch"
+    branchname2: "git branch | grep '*'"
 phases:
   build:
     commands:
     - git init
     - echo $branchname
+    - echo $branchname2
     - git branch
     - python helloworld.py
     - branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
     - echo $branch
+   post_build:
+    commands:
+      echo $branchname
+      echo $branchname2
 artifacts:
   files:
     - '**/*'
