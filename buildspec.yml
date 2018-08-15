@@ -13,6 +13,7 @@ phases:
     - ls .git/
     - ls .git/refs/heads
     - more .git/refs/heads/branch3
+    - more .git/logs/refs/heads
     - python helloworld.py
     - printenv
   post_build:
