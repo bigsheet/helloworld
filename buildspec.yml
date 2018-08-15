@@ -14,6 +14,7 @@ phases:
     - git init
     - git branch --column
     - more .git/HEAD
+    - more .git/FETCH_HEAD
     - echo $CODEBUILD_SOURCE_VERSION
     - echo $CODEBUILD_GIT_BRANCH
     - echo $CODEBUILD_RESOLVED_SOURCE_VERSIONGitHub
