@@ -2,18 +2,23 @@ version: 0.2
 
 env:
   variables:
-    branchname: "git branch | sed"
-
+    branchname: "git branch"
+  commands:
+    - git branch --column 
 phases:
   build:
     commands:
-    - git init
-    - git --version
-    - echo $branchname
-    - git branch
+    - echo $CODEBUILD_RESOLVED_SOURCE_VERSIONGitHub
+    - git name-rev --name-only $(git rev-parse HEAD)
+    - ls
+    - ls .git/
+    - ls .git/refs/heads
+    - more .git/refs/heads/branch3
+    - more .git/logs/refs/heads
     - python helloworld.py
-    - branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-    - echo $branch
+    - printenv
+  post_build:
+    commands:
 artifacts:
   files:
     - '**/*'
