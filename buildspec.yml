@@ -9,6 +9,7 @@ phases:
   build:
     commands:
     - branch="$(git name-rev --name-only $(git rev-parse HEAD))"
+    - echo "${branch}"
     - python helloworld.py
   post_build:
     commands:
