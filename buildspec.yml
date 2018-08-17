@@ -2,7 +2,6 @@ version: 0.2
 
 env:
   variables:
-    branchname: "git branch"
 phases:
   build:
     commands:
