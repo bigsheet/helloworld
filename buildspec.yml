@@ -8,18 +8,11 @@ env:
 phases:
   build:
     commands:
-    - echo $CODEBUILD_RESOLVED_SOURCE_VERSIONGitHub
-    - git name-rev --name-only $(git rev-parse HEAD)
-    - ls
-    - ls .git/
-    - ls .git/refs/heads
-    - more .git/refs/heads/branch3
-    - more .git/logs/refs/heads
+    - branch="$(git name-rev --name-only $(git rev-parse HEAD))"
     - python helloworld.py
-    - printenv
   post_build:
     commands:
 artifacts:
   files:
     - '**/*'
-  name: myname-$(date +%Y-%m-%d)
+  name: myname-$branch
