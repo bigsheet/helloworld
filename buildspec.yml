@@ -8,7 +8,8 @@ env:
 phases:
   build:
     commands:
-    - branch="$(git name-rev --name-only $(git rev-parse HEAD))"
+    - pwd
+    - ls
     - echo "${branch}"
     - python helloworld.py
   post_build:
