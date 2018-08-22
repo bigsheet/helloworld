@@ -16,6 +16,7 @@ phases:
   build:
     commands:
     - REPOSITORY_URI=96337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world
+    - echo $REPOSITORY_URI
     - pwd
     - ls
     - python helloworld.py > hello-world
