@@ -10,7 +10,7 @@ phases:
   build:
     commands:
     - python helloworld.py > hello-world
-    - $(aws ecr get-login --no-include-email --region eu-west-1)
+    - aws ecr get-login --no-include-email --region eu-west-1
     - docker build -t hello-world .
     - docker tag hello-world:latest 396337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world:latest
     - docker push 396337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world:latest
