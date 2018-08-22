@@ -3,6 +3,7 @@ version: 0.2
 env:
   variables:
     branchname: "git branch"
+    REPOSITORY_URI: "96337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world"
 phases:
   pre_build:
     commands:
