@@ -9,36 +9,22 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - eval $(aws ecr get-login --region eu-west-1)
+      - eval $(aws ecr get-login --no-include-email --region eu-west-1)
       - REPOSITORY_URI=96337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
-    - REPOSITORY_URI=96337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world
-    - echo $REPOSITORY_URI
-    - pwd
-    - ls
     - python helloworld.py > hello-world
-    - echo Build started on `date`
-    - echo Building the Docker image...
-    - eval $(aws ecr get-login | sed 's|https://||')
-    - docker build -t $REPOSITORY_URI:latest .
-    - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+    - eval $(aws ecr get-login --no-include-email --region eu-west-1)
+    - docker build -t hello-world .
+    - docker tag hello-world:latest 396337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world:latest
+    - docker push 396337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world:latest
 #- git name-rev --name-only $(git rev-parse HEAD)
     - ls
     - more hello-world
-    - docker build -t hello-world .
-    - docker tag hello-world:latest 96337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world:latest
-    - docker push 96337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world:latest
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - echo Writing image definitions file...
-      - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
   files:
     - '**/*'
