@@ -9,9 +9,14 @@ phases:
     - pwd
     - ls
 #- git name-rev --name-only $(git rev-parse HEAD)
-    - python helloworld.py > MyApp
+    - python helloworld.py > hello-world
     - ls
-    - more MyApp
+    - more hello-world
+    - $(aws ecr get-login --no-include-email --region eu-west-1)
+    - Invoke-Expression -Command (Get-ECRLoginCommand -Region eu-west-1).Command
+    - docker build -t hello-world .
+    - docker tag hello-world:latest 396337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world:latest
+    - docker push 396337334146.dkr.ecr.eu-west-1.amazonaws.com/hello-world:latest
   post_build:
     commands:
 artifacts:
