@@ -1,0 +1,6 @@
+[
+    {
+        "name": "MyApp",
+        "imageUri": "396337334146.dkr.ecr.eu-west-1.amazonaws.com/ecs-repo:hello-world"
+    }
+]
