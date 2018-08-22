@@ -8,7 +8,7 @@ phases:
     commands:
     - pwd
     - ls
-    - git name-rev --name-only $(git rev-parse HEAD)
+#- git name-rev --name-only $(git rev-parse HEAD)
     - python helloworld.py > MyApp
     - ls
     - more MyApp
