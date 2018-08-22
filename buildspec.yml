@@ -9,7 +9,7 @@ phases:
     - pwd
     - ls
     - git name-rev --name-only $(git rev-parse HEAD)
-    - python helloworld.py
+    - python helloworld.py > MyApp
   post_build:
     commands:
 artifacts:
